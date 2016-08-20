@@ -1,0 +1,25 @@
+	<table>
+	<% @post.comments.each do |comment| %>
+		<tr>
+		<td>
+		<p>
+			<strong>Commenter: </strong><%= comment.commenter %>
+		</p>
+		<p>
+			<strong>Content: </strong><i><%= comment.content %></i>
+		</p>
+		<p>
+			<strong>Comment_id:</strong> <%= comment.id %>
+			<strong>Post_id</strong> <%= comment.post_id %>
+		</p>
+
+		<p>
+			<%= link_to 'delete', post_comment_path(@post.id, comment.id), 
+						method: :delete,
+						data: {confirm: "Are You sure?"} %>
+			<%= link_to 'edit', edit_post_comment_path(@post.id, comment.id) %>
+		</p>
+		</td>
+		</tr>
+	<% end %>
+	</table>
